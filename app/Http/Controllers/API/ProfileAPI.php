@@ -20,7 +20,7 @@ class ProfileAPI extends Controller
     {
         $profile = Profile::create([
             'name' => $request->name,
-            'picture' => (new Uploader)->uploadImage($request->picture)
+            'picture' => (new Uploader)->uploadImage($request->picture, 'profiles')
         ]);
 
         return($profile);

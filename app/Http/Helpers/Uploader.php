@@ -12,7 +12,7 @@ class Uploader
 
     protected $path = 'public/';
 
-    public function uploadImage($data, $type = 1000)
+    public function uploadImage($data, $folderName, $type = 1000)
     {
         $imageName = NULL;
         $extension = $data->getClientOriginalExtension();
@@ -23,7 +23,7 @@ class Uploader
             });
         $imageName = strtotime(date('Y-m-d H:i:s')).'_'.uniqid().'.'.$extension;
 
-        $profilePath = 'photos/profile/' . $imageName;
+        $profilePath = 'photos/' . $folderName . '/' . $imageName;
 
         $saved     = Storage::put($this->path . '/' . $profilePath, $img->encode());
 
